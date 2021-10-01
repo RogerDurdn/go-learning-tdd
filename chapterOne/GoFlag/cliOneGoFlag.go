@@ -13,7 +13,7 @@ var opts struct {
 
 func main() {
 	flags.Parse(&opts)
-	if opts.Spanish == true {
+	if opts.Spanish {
 		fmt.Printf("Hola %s!\n", opts.Name)
 	} else {
 		fmt.Printf("Hello %s!\n", opts.Name)
