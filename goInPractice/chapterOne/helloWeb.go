@@ -10,6 +10,5 @@ func hello(res http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", hello)
-	http.ListenAndServe("localhost:5000", nil)
+	fmt.Println("Hello, my name is Roger Drdn")
 }
