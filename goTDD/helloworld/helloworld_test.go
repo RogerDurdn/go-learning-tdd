@@ -55,3 +55,26 @@ func TestAssertDefault(t *testing.T) {
 		assertCorrectMessage(t, got, want)
 	})
 }
+func TestAssertLanguage(t *testing.T) {
+	assertCorrectMessage := func(t testing.TB, got, want string) {
+		t.Helper()
+		if got != want {
+			t.Errorf("got %v, want %v", got, want)
+		}
+	}
+	t.Run("hello with recipient and language", func(t *testing.T) {
+		got := helloLanguage("roger", "spanish")
+		want := "hola roger"
+		assertCorrectMessage(t, got, want)
+	})
+	t.Run("hello with recipient and language default", func(t *testing.T) {
+		got := helloLanguage("roger", "chinese")
+		want := "hello roger"
+		assertCorrectMessage(t, got, want)
+	})
+	t.Run("hello with recipient and language french", func(t *testing.T) {
+		got := helloLanguage("roger", "french")
+		want := "bonjour roger"
+		assertCorrectMessage(t, got, want)
+	})
+}
