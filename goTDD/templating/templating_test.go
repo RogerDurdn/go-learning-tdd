@@ -2,18 +2,18 @@ package templating_test
 
 import (
 	"bytes"
-	blogpost "projectsBook/goTDD/reading-io/blogposts"
-	"projectsBook/goTDD/templating"
+	reading_io "tdd/reading-io"
+	"tdd/templating"
 	"testing"
 )
 
 func TestRender(t *testing.T) {
 	var (
-		aPost = blogpost.Post{
-			Title: "Hello",
-			Body: "this is a body",
+		aPost = reading_io.Post{
+			Title:       "Hello",
+			Body:        "this is a body",
 			Description: "This is description",
-			Tags: []string{"go", "test"},
+			Tags:        []string{"go", "test"},
 		}
 	)
 

@@ -1,4 +1,4 @@
-package blogpost
+package reading_io
 
 import (
 	"io/fs"
@@ -20,7 +20,7 @@ func NewPostFromFS(fileSystem fs.FS) ([]Post, error) {
 	return posts, nil
 }
 
-func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error)  {
+func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error) {
 	postFile, err := fileSystem.Open(f.Name())
 	if err != nil {
 		return Post{}, err
@@ -28,4 +28,3 @@ func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error)  {
 	defer postFile.Close()
 	return newPost(postFile)
 }
-

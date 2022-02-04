@@ -1,4 +1,4 @@
-package blogpost
+package reading_io
 
 import (
 	"bufio"
@@ -10,32 +10,32 @@ import (
 
 type Post struct {
 	Title, Description, Body string
-	Tags []string
+	Tags                     []string
 }
 
 const (
-	titleSeparator = "Title:"
+	titleSeparator       = "Title:"
 	descriptionSeparator = "Description:"
-	tagSeparator = "Tags:"
+	tagSeparator         = "Tags:"
 )
 
 func newPost(postBody io.Reader) (Post, error) {
 	scanner := bufio.NewScanner(postBody)
 
-	readMetaLine := func(tagName string) string{
+	readMetaLine := func(tagName string) string {
 		scanner.Scan()
 		return strings.TrimPrefix(scanner.Text(), tagName)
 	}
 
 	return Post{
-		Title: readMetaLine(titleSeparator),
+		Title:       readMetaLine(titleSeparator),
 		Description: readMetaLine(descriptionSeparator),
-		Tags: strings.Split(readMetaLine(tagSeparator), ","),
-		Body: readBody(scanner),
+		Tags:        strings.Split(readMetaLine(tagSeparator), ","),
+		Body:        readBody(scanner),
 	}, nil
 }
 
-func readBody(scanner *bufio.Scanner) string{
+func readBody(scanner *bufio.Scanner) string {
 	scanner.Scan()
 	buf := bytes.Buffer{}
 	for scanner.Scan() {
@@ -43,4 +43,3 @@ func readBody(scanner *bufio.Scanner) string{
 	}
 	return strings.TrimSuffix(buf.String(), "\n")
 }
-

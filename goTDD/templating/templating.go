@@ -1,27 +1,26 @@
 package templating
 
 import (
-	"fmt"
+	"embed"
+	"html/template"
 	"io"
-	blogpost "projectsBook/goTDD/reading-io/blogposts"
+	reading_io "tdd/reading-io"
 )
 
-func main() {
-}
+var (
+	//postTemplate = `<h1>{{.Title}}</h1><p>{{.Description}}</p>Tags: <ul>{{range .Tags}}<li>{{.}}</li>{{end}}</ul>`
+	postTemplates embed.FS
+)
 
-func Render(writer io.Writer, post blogpost.Post) error  {
-	_, err := fmt.Fprintf(writer,"<h1>%s</h1><p>%s</p>",
-		post.Title, post.Description)
+func Render(w io.Writer, p reading_io.Post) error {
+	templ, err := template.ParseFS(postTemplates, "templates/*.gohtml")
 	if err != nil {
 		return err
 	}
-	_, err = fmt.Fprintf(writer, "Tags: <ul>")
-	if err != nil {
+
+	if err := templ.Execute(w, p); err != nil {
 		return err
 	}
-	for _, tag := range post.Tags {
-		_, err = fmt.Fprintf(writer, "<li>%s</li>", tag)
-	}
-	_, err = fmt.Fprintf(writer, "</ul>")
+
 	return nil
 }

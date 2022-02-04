@@ -1,8 +1,8 @@
-package blogpost_test
+package reading_io_test
 
 import (
-	blogpost "projectsBook/goTDD/reading-io/blogposts"
 	"reflect"
+	reading_io "tdd/reading-io"
 	"testing"
 	"testing/fstest"
 )
@@ -18,16 +18,16 @@ Description: description 2`
 		"hello word.md":  {Data: []byte("Title: post 1")},
 		"hello-word2.md": {Data: []byte("Title: post 2")},
 	}
-	posts, err := blogpost.NewPostFromFS(systemTestMap)
+	posts, err := reading_io.NewPostFromFS(systemTestMap)
 	if err != nil {
 		t.Fatalf("Error on newPost: %v", err)
 	}
-	assertPost(t, posts[0], blogpost.Post{Title: "post 1",
+	assertPost(t, posts[0], reading_io.Post{Title: "post 1",
 		Description: "description 1",
-		})
+	})
 }
 
-func assertPost(t *testing.T, got blogpost.Post, want blogpost.Post)  {
+func assertPost(t *testing.T, got reading_io.Post, want reading_io.Post) {
 	t.Helper()
 	if reflect.DeepEqual(got, want) {
 		t.Errorf("got %v, want %v", got, want)
