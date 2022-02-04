@@ -2,6 +2,7 @@ package blogpost_test
 
 import (
 	blogpost "projectsBook/goTDD/reading-io/blogposts"
+	"reflect"
 	"testing"
 	"testing/fstest"
 )
@@ -28,7 +29,7 @@ Description: description 2`
 
 func assertPost(t *testing.T, got blogpost.Post, want blogpost.Post)  {
 	t.Helper()
-	if got != want {
+	if reflect.DeepEqual(got, want) {
 		t.Errorf("got %v, want %v", got, want)
 	}
 }
