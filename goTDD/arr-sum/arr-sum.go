@@ -1,5 +1,10 @@
 package arr_sum
 
+/*
+The sum of integer on an array
+simple example of how TDD has to be applied
+*/
+
 func main() {
 }
 
@@ -19,6 +24,6 @@ func SumSlice(numbers []int) int {
 	return total
 }
 
-func SumAll(numbersToSum... []int) (sums []int) {
+func SumAll(numbersToSum ...[]int) (sums []int) {
 	return
 }

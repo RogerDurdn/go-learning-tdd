@@ -7,8 +7,10 @@ import (
 	"time"
 )
 
-const write = "write"
-const sleep = "sleep"
+const (
+	write = "write"
+	sleep = "sleep"
+)
 
 type SpyCountdownOperations struct {
 	Calls []string
@@ -65,6 +67,8 @@ Go!`
 		}
 	})
 }
+
+// Some functionalities
 
 func TestConfigurableSleeper(t *testing.T) {
 	sleepTime := 5 * time.Second

@@ -7,8 +7,12 @@ import (
 	"time"
 )
 
-const countingStart = 3
-const finalPrint = "Go!"
+// Advanced example of TDD applied on mocked tests
+
+const (
+	countingStart = 3
+	finalPrint    = "Go!"
+)
 
 type Sleeper interface {
 	Sleep()
