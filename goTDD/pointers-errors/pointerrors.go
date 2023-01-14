@@ -14,11 +14,13 @@ func (b Bitcoin) String() string {
 }
 
 type Wallet struct {
+	amount  int
 	balance Bitcoin
 }
 
 func (w *Wallet) Deposit(amount Bitcoin) {
 	w.balance += amount
+	w.amount = int(amount)
 }
 
 func (w Wallet) Balance() Bitcoin {

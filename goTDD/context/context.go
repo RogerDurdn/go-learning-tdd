@@ -8,12 +8,13 @@ import (
 )
 
 func main() {
-
 }
 
 type Store interface {
 	Fetch(ctx context.Context) (string, error)
 }
+
+// Where we are usign some context things
 
 func Server(store Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
